@@ -13,6 +13,7 @@
 body {
   font-family: 'Noto Serif Disp', 'Papyrus', 'Times New Roman', serif;
   background-image: url('/img/StarfieldSimulation.gif');
+  color: rgb(255, 255, 255);
 }
 
 .title {
@@ -30,5 +31,6 @@ body {
   background-color: rgb(255, 255, 255);
   opacity: 0.8;
   padding: 5px;
+  margin: 5px;
   max-width: 600px;
 }

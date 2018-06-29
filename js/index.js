@@ -1,4 +1,5 @@
 (async () => {
+  const botsDiv = document.getElementById('bots');
   const bots = (await fetch('json/bots.json')
     .then(data => data.json()))
     .map(bot => ({
@@ -32,7 +33,7 @@
     botDiv.style.animationDuration = `${(Math.random() * 20) + 0.5}s`;
     botDiv.style.color = `rgb(${randomInt(256)},${randomInt(256)},${randomInt(256)})`;
 
-    document.body.appendChild(botDiv);
+    botsDiv.appendChild(botDiv);
   });
 
   console.log(bots);
