@@ -1,0 +1,34 @@
+@keyframes colour {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+body {
+  font-family: 'Noto Serif Disp', 'Papyrus', 'Times New Roman', serif;
+  background-image: url('/img/StarfieldSimulation.gif');
+}
+
+.title {
+  background-color: green;
+}
+
+.colour {
+  color: red;
+  animation-name: colour;
+  animation-duration: 4s;
+}
+
+.bot-div {
+  border-style: solid;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
+  padding: 5px;
+  max-width: 600px;
+}
