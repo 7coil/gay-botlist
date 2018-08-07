@@ -15,7 +15,7 @@
     const botInviteLabel = document.createElement('p');
     botInviteLabel.innerText = `Invite ${bot.name}`;
     botInvite.appendChild(botInviteLabel);
-    botInvite.setAttribute('href', bot.invite);
+    botInvite.setAttribute('href', bot.link);
     const botAvatar = document.createElement('img');
     botAvatar.setAttribute('src', bot.avatar);
     botAvatar.classList.add('avatar');
