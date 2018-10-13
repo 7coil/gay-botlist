@@ -1,40 +1,38 @@
 (async () => {
   const botsDiv = document.getElementById('bots');
-  const bots = await fetch('https://discordbots.co.uk/api/bots/all.json')
+  const bots = await fetch('https://discordbots.co.uk/api/all.json')
     .then(data => data.json())
-  
-  const randomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
-  bots.forEach(async (bot) => {
-    const botDiv = document.createElement('div');
-    const botHeader = document.createElement('h2');
-    botHeader.innerText = bot.name;
-    const botDescription = document.createElement('p');
-    botDescription.innerText = bot.description;
-    const botInvite = document.createElement('a');
-    const botInviteLabel = document.createElement('p');
-    botInviteLabel.innerText = `Invite ${bot.name}`;
-    botInvite.appendChild(botInviteLabel);
-    botInvite.setAttribute('href', bot.link);
-    const botAvatar = document.createElement('img');
-    botAvatar.setAttribute('src', bot.avatar);
-    botAvatar.classList.add('avatar');
+  bots
+    .filter(bot => bot.fields.template === 'bots')
+    .forEach(async (data) => {
+      const bot = data.frontmatter;
+      const botDiv = document.createElement('div');
+      const botHeader = document.createElement('h2');
+      botHeader.innerText = bot.pagename;
+      const botDescription = document.createElement('p');
+      botDescription.innerText = bot.description;
+      const botInvite = document.createElement('a');
+      const botInviteLabel = document.createElement('p');
+      botInviteLabel.innerText = `Invite ${bot.pagename}`;
+      botInvite.appendChild(botInviteLabel);
+      botInvite.setAttribute('href', bot.link);
+      const botAvatar = document.createElement('img');
+      botAvatar.setAttribute('src', bot.avatar);
+      botAvatar.classList.add('avatar');
 
-    botDiv.appendChild(botAvatar);
-    botDiv.appendChild(botHeader);
-    botDiv.appendChild(botDescription);
-    botDiv.appendChild(botInvite);
+      botAvatar.addEventListener('error', () => {
+        botAvatar.setAttribute('src', 'https://discordbots.co.uk/assets/images/logo/logo.svg');
+      })
 
-    botDiv.classList.add('colour');
-    botDiv.classList.add('bot-div');
-    botDiv.style.animationDuration = `${(Math.random() * 20) + 0.5}s`;
-    botDiv.style.color = `rgb(${randomInt(256)},${randomInt(256)},${randomInt(256)})`;
-    botDiv.style.width = `${randomInt(200) + 200}px`;
-    botDiv.style.height = `${randomInt(300) + 300}px`;
+      botDiv.appendChild(botAvatar);
+      botDiv.appendChild(botHeader);
+      botDiv.appendChild(botDescription);
+      botDiv.appendChild(botInvite);
 
-    botsDiv.appendChild(botDiv);
-  });
+      botDiv.classList.add('bot-div');
 
-  console.log(bots);
+      botsDiv.appendChild(botDiv);
+    });
 })()
 
